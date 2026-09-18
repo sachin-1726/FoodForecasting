@@ -1,0 +1,28 @@
+# Angular
+food-forecasting-ui/node_modules/
+food-forecasting-ui/dist/
+food-forecasting-ui/.angular/
+
+# .NET
+FoodForecastingAPI/FoodForecastingAPI/bin/
+FoodForecastingAPI/FoodForecastingAPI/obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+appsettings.Development.json
+
+# Test / coverage generated files
+TestResults/
+coverage/
