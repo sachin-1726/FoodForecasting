@@ -1,0 +1,105 @@
+<h1>Meals Management</h1>
+
+<div class="meal-form">
+
+  <h2>Add Meal</h2>
+
+  <label>Meal Name</label>
+
+  <input
+    type="text"
+    [(ngModel)]="mealName"
+    placeholder="Enter meal name"
+  >
+
+  <label>Meal Type</label>
+
+  <select [(ngModel)]="mealType">
+
+    <option value="Breakfast">Breakfast</option>
+    <option value="Lunch">Lunch</option>
+    <option value="Dinner">Dinner</option>
+
+  </select>
+
+  <label>Quantity</label>
+
+  <input
+    type="number"
+    [(ngModel)]="quantity"
+    placeholder="Enter quantity"
+  >
+
+  <button
+    type="button"
+    (click)="addMeal()"
+  >
+    Add Meal
+  </button>
+
+</div>
+
+<h2>Meal List</h2>
+
+<p
+  *ngIf="loading"
+  class="loading-message"
+>
+  Loading meal data...
+</p>
+
+<p
+  *ngIf="!loading && meals.length === 0"
+  class="empty-message"
+>
+  No meal records found.
+</p>
+
+<table
+  class="meal-table"
+  *ngIf="!loading && meals.length > 0"
+>
+
+  <thead>
+
+    <tr>
+      <th>ID</th>
+      <th>Meal Name</th>
+      <th>Meal Type</th>
+      <th>Quantity</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let meal of meals">
+
+      <td>{{ meal.id }}</td>
+
+      <td>{{ meal.mealName }}</td>
+
+      <td>{{ meal.mealType }}</td>
+
+      <td>{{ meal.quantity }}</td>
+
+      <td>{{ meal.status }}</td>
+
+      <td>
+
+        <button
+          type="button"
+          (click)="deleteMeal(meal.id!)"
+        >
+          Delete
+        </button>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>

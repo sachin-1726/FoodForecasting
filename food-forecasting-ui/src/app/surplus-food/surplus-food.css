@@ -1,0 +1,113 @@
+h1 {
+  margin-bottom: 20px;
+}
+
+.surplus-form {
+  width: 400px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.surplus-form h2 {
+  margin-top: 0;
+}
+
+.surplus-form label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+
+.surplus-form input,
+.surplus-form select {
+  width: 100%;
+  padding: 9px;
+  box-sizing: border-box;
+}
+
+.surplus-form button {
+  margin-top: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background: #f2f2f2;
+}
+
+table button {
+  padding: 6px 12px;
+  cursor: pointer;
+}.surplus-table {
+  display: table !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: white !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.surplus-table thead {
+  display: table-header-group !important;
+  visibility: visible !important;
+}
+
+.surplus-table tbody {
+  display: table-row-group !important;
+  visibility: visible !important;
+}
+
+.surplus-table tr {
+  display: table-row !important;
+  visibility: visible !important;
+}
+
+.surplus-table th,
+.surplus-table td {
+  display: table-cell !important;
+  padding: 10px !important;
+  border: 1px solid #ddd !important;
+  text-align: left !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.surplus-table th {
+  background: #f2f2f2 !important;
+}
+
+.loading-message {
+  padding: 10px;
+  color: #555;
+}
+
+.empty-message {
+  padding: 10px;
+  color: #777;
+}.surplus-table {
+  display: table !important;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.surplus-table th,
+.surplus-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}

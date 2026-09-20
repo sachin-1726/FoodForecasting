@@ -1,0 +1,254 @@
+<h1>Demand Forecast</h1>
+
+<p class="description">
+  Forecast future food demand using previous demand records.
+</p>
+
+<div class="forecast-form">
+
+  <h2>Enter Forecast Demand</h2>
+
+  <label for="forecastDate">
+    Date
+  </label>
+
+  <input
+    id="forecastDate"
+    type="date"
+    [(ngModel)]="forecastDate"
+  >
+
+  <label for="mealType">
+    Meal Type
+  </label>
+
+  <select
+    id="mealType"
+    [(ngModel)]="mealType"
+    (change)="onMealTypeChange()"
+  >
+
+    <option value="Breakfast">
+      Breakfast
+    </option>
+
+    <option value="Lunch">
+      Lunch
+    </option>
+
+    <option value="Dinner">
+      Dinner
+    </option>
+
+  </select>
+
+  <label for="expectedPeople">
+    Expected People
+  </label>
+
+  <input
+    id="expectedPeople"
+    type="number"
+    min="1"
+    [(ngModel)]="expectedPeople"
+    placeholder="Enter expected people"
+  >
+
+  <button
+    type="button"
+    (click)="addForecast()"
+  >
+    Save Forecast
+  </button>
+
+</div>
+
+<div class="generate-section">
+
+  <h2>Generate Actual Forecast</h2>
+
+  <p>
+    Select a meal type and generate a forecast using the latest
+    demand records.
+  </p>
+
+  <label for="generateMealType">
+    Meal Type
+  </label>
+
+  <select
+    id="generateMealType"
+    [(ngModel)]="mealType"
+    (change)="onMealTypeChange()"
+  >
+
+    <option value="Breakfast">
+      Breakfast
+    </option>
+
+    <option value="Lunch">
+      Lunch
+    </option>
+
+    <option value="Dinner">
+      Dinner
+    </option>
+
+  </select>
+
+  <button
+    type="button"
+    (click)="generateForecast()"
+    [disabled]="generating"
+  >
+
+    <span *ngIf="!generating">
+      Generate Forecast
+    </span>
+
+    <span *ngIf="generating">
+      Generating...
+    </span>
+
+  </button>
+
+</div>
+
+<p
+  *ngIf="errorMessage"
+  class="error-message"
+>
+  {{ errorMessage }}
+</p>
+
+<h2>Forecast Result</h2>
+
+<div class="forecast-results">
+
+  <div class="result-card">
+
+    <h3>Average Demand</h3>
+
+    <p>
+      {{ averageDemand }}
+    </p>
+
+    <span>
+      Average previous demand
+    </span>
+
+  </div>
+
+  <div class="result-card">
+
+    <h3>Predicted Demand</h3>
+
+    <p>
+      {{ predictedDemand }}
+    </p>
+
+    <span>
+      Expected people
+    </span>
+
+  </div>
+
+  <div class="result-card">
+
+    <h3>Recommended Production</h3>
+
+    <p>
+      {{ recommendedProduction }}
+    </p>
+
+    <span>
+      5% safety buffer included
+    </span>
+
+  </div>
+
+</div>
+
+<h2>Forecast History</h2>
+
+<p
+  *ngIf="loading"
+  class="loading-message"
+>
+  Loading forecast data...
+</p>
+
+<p
+  *ngIf="!loading && forecasts.length === 0"
+  class="empty-message"
+>
+  No forecast records found.
+</p>
+
+<table
+  class="forecast-table"
+>
+
+  <thead>
+
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Meal Type</th>
+      <th>Expected People</th>
+      <th>Action</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr
+      *ngFor="let forecast of forecasts"
+    >
+
+      <td>
+        {{ forecast.id }}
+      </td>
+
+      <td>
+        {{ forecast.demandDate | date:'dd-MM-yyyy' }}
+      </td>
+
+      <td>
+        {{ forecast.mealType }}
+      </td>
+
+      <td>
+        {{ forecast.expectedPeople }}
+      </td>
+
+      <td>
+
+        <button
+          type="button"
+          (click)="deleteForecast(forecast.id!)"
+        >
+          Delete
+        </button>
+
+      </td>
+
+    </tr>
+
+    <tr
+      *ngIf="!loading && forecasts.length === 0"
+    >
+
+      <td
+        colspan="5"
+        class="empty-table-message"
+      >
+        No forecast records available.
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>

@@ -1,0 +1,111 @@
+<h1>Demand Management</h1>
+
+<div class="demand-form">
+
+  <h2>Enter Daily Demand</h2>
+
+  <label>Date</label>
+
+  <input
+    type="date"
+    [(ngModel)]="demandDate"
+  >
+
+  <label>Meal Type</label>
+
+  <select [(ngModel)]="mealType">
+
+    <option value="Breakfast">Breakfast</option>
+    <option value="Lunch">Lunch</option>
+    <option value="Dinner">Dinner</option>
+
+  </select>
+
+  <label>Expected People</label>
+
+  <input
+    type="number"
+    [(ngModel)]="expectedPeople"
+    placeholder="Enter number of people"
+  >
+
+  <button
+    type="button"
+    (click)="addDemand()"
+  >
+    Save Demand
+  </button>
+
+</div>
+
+<h2>Demand List</h2>
+
+<p
+  *ngIf="loading"
+  class="loading-message"
+>
+  Loading demand data...
+</p>
+
+<p
+  *ngIf="!loading && demands.length === 0"
+  class="empty-message"
+>
+  No demand records found.
+</p>
+
+<table
+  class="demand-table"
+  *ngIf="!loading && demands.length > 0"
+>
+
+  <thead>
+
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Meal Type</th>
+      <th>Expected People</th>
+      <th>Action</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr
+      *ngFor="let demand of demands"
+    >
+
+      <td>
+        {{ demand.id }}
+      </td>
+
+      <td>
+        {{ demand.demandDate | date:'dd-MM-yyyy' }}
+      </td>
+
+      <td>
+        {{ demand.mealType }}
+      </td>
+
+      <td>
+        {{ demand.expectedPeople }}
+      </td>
+
+      <td>
+
+        <button
+          type="button"
+          (click)="deleteDemand(demand.id!)"
+        >
+          Delete
+        </button>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>

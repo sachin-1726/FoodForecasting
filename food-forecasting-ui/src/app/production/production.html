@@ -1,0 +1,218 @@
+<h1>Production Management</h1>
+
+<p class="description">
+  Production quantity can be generated automatically from the demand forecast.
+</p>
+
+<div class="production-form">
+
+  <h2>Enter Production Details</h2>
+
+  <label>Production Date</label>
+
+  <input
+    type="date"
+    [(ngModel)]="productionDate"
+  >
+
+  <label>Meal Type</label>
+
+  <select [(ngModel)]="mealType">
+
+    <option value="Breakfast">Breakfast</option>
+    <option value="Lunch">Lunch</option>
+    <option value="Dinner">Dinner</option>
+
+  </select>
+
+  <button
+    type="button"
+    class="forecast-button"
+    (click)="generateRecommendedProduction()"
+    [disabled]="generatingForecast"
+  >
+
+    <span *ngIf="!generatingForecast">
+      Get Recommended Production
+    </span>
+
+    <span *ngIf="generatingForecast">
+      Calculating...
+    </span>
+
+  </button>
+
+  <div
+    *ngIf="forecastResult"
+    class="forecast-result"
+  >
+
+    <h3>Forecast Result</h3>
+
+    <p>
+      <strong>Meal Type:</strong>
+      {{ forecastResult.mealType }}
+    </p>
+
+    <p>
+      <strong>Average Demand:</strong>
+      {{ forecastResult.averageDemand }}
+    </p>
+
+    <p>
+      <strong>Predicted People:</strong>
+      {{ forecastResult.forecastedPeople }}
+    </p>
+
+    <p>
+      <strong>Recommended Production:</strong>
+      {{ forecastResult.recommendedProduction }}
+    </p>
+
+    <p class="success-message">
+      Recommended quantity has been filled automatically.
+    </p>
+
+  </div>
+
+  <p
+    *ngIf="forecastError"
+    class="error-message"
+  >
+    {{ forecastError }}
+  </p>
+
+  <label>Meal Name</label>
+
+  <input
+    type="text"
+    [(ngModel)]="mealName"
+    placeholder="Enter meal name"
+  >
+
+  <label>Quantity Produced</label>
+
+  <input
+    type="number"
+    min="1"
+    [(ngModel)]="quantityProduced"
+    placeholder="Enter quantity"
+  >
+
+  <label>Status</label>
+
+  <select [(ngModel)]="status">
+
+    <option value="Produced">
+      Produced
+    </option>
+
+    <option value="Completed">
+      Completed
+    </option>
+
+  </select>
+
+  <button
+    type="button"
+    (click)="addProduction()"
+  >
+    Save Production
+  </button>
+
+</div>
+
+<h2>Production List</h2>
+
+<p
+  *ngIf="loading"
+  class="loading-message"
+>
+  Loading production data...
+</p>
+
+<p
+  *ngIf="!loading && productions.length === 0"
+  class="empty-message"
+>
+  No production records found.
+</p>
+
+<table class="production-table">
+
+  <thead>
+
+    <tr>
+
+      <th>ID</th>
+      <th>Date</th>
+      <th>Meal Type</th>
+      <th>Meal Name</th>
+      <th>Quantity Produced</th>
+      <th>Status</th>
+      <th>Action</th>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr
+      *ngFor="let production of productions"
+    >
+
+      <td>
+        {{ production.id }}
+      </td>
+
+      <td>
+        {{ production.productionDate | date:'dd-MM-yyyy' }}
+      </td>
+
+      <td>
+        {{ production.mealType }}
+      </td>
+
+      <td>
+        {{ production.mealName }}
+      </td>
+
+      <td>
+        {{ production.quantityProduced }}
+      </td>
+
+      <td>
+        {{ production.status }}
+      </td>
+
+      <td>
+
+        <button
+          type="button"
+          class="delete-button"
+          (click)="deleteProduction(production.id!)"
+        >
+          Delete
+        </button>
+
+      </td>
+
+    </tr>
+
+    <tr
+      *ngIf="!loading && productions.length === 0"
+    >
+
+      <td
+        colspan="7"
+        class="empty-table-message"
+      >
+        No production records available.
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>

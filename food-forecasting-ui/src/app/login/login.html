@@ -1,0 +1,41 @@
+<div class="login-page">
+
+  <div class="login-box">
+
+    <h1>Food Service Management</h1>
+
+    <p class="subtitle">Admin Login</p>
+
+    <form (ngSubmit)="login()">
+
+      <label>Username</label>
+      <input
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="Enter username"
+      >
+
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Enter password"
+      >
+
+      <button type="submit">Login</button>
+
+      <p class="error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </p>
+
+    </form>
+
+    <p class="login-info">
+      Admin access for Food Service Management System
+    </p>
+
+  </div>
+
+</div>

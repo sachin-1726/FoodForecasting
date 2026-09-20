@@ -1,0 +1,39 @@
+.meal-form {
+  background: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+}
+
+.meal-form label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.meal-form input,
+.meal-form select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}

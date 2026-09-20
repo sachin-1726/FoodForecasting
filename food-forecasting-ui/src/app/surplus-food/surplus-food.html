@@ -1,0 +1,189 @@
+<h1>Surplus Food Management</h1>
+
+<p class="description">
+  Calculate and record food remaining after consumption.
+</p>
+
+<div class="surplus-form">
+
+  <h2>Enter Surplus Food Details</h2>
+
+  <label>Surplus Date</label>
+
+  <input
+    type="date"
+    [(ngModel)]="surplusDate"
+  >
+
+  <label>Meal Type</label>
+
+  <select [(ngModel)]="mealType">
+
+    <option value="Breakfast">
+      Breakfast
+    </option>
+
+    <option value="Lunch">
+      Lunch
+    </option>
+
+    <option value="Dinner">
+      Dinner
+    </option>
+
+  </select>
+
+  <label>Meal Name</label>
+
+  <input
+    type="text"
+    [(ngModel)]="mealName"
+    placeholder="Enter meal name"
+  >
+
+  <label>Produced Quantity</label>
+
+  <input
+    type="number"
+    min="1"
+    [(ngModel)]="producedQuantity"
+    (ngModelChange)="calculateSurplus()"
+  >
+
+  <label>Consumed Quantity</label>
+
+  <input
+    type="number"
+    min="0"
+    [(ngModel)]="consumedQuantity"
+    (ngModelChange)="calculateSurplus()"
+  >
+
+  <label>Surplus Quantity</label>
+
+  <input
+    type="number"
+    [value]="surplusQuantity"
+    readonly
+  >
+
+  <label>Status</label>
+
+  <input
+    type="text"
+    [value]="status"
+    readonly
+  >
+
+  <button
+    type="button"
+    (click)="addSurplusFood()"
+  >
+    Save Surplus Food
+  </button>
+
+</div>
+
+<h2>Surplus Food List</h2>
+
+<p
+  *ngIf="loading"
+  class="loading-message"
+>
+  Loading surplus food data...
+</p>
+
+<p
+  *ngIf="!loading && surplusFoods.length === 0"
+  class="empty-message"
+>
+  No surplus food records found.
+</p>
+
+<table class="surplus-table">
+
+  <thead>
+
+    <tr>
+
+      <th>ID</th>
+      <th>Date</th>
+      <th>Meal Type</th>
+      <th>Meal Name</th>
+      <th>Produced</th>
+      <th>Consumed</th>
+      <th>Surplus</th>
+      <th>Status</th>
+      <th>Action</th>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr
+      *ngFor="let surplus of surplusFoods"
+    >
+
+      <td>
+        {{ surplus.id }}
+      </td>
+
+      <td>
+        {{ surplus.surplusDate | date:'dd-MM-yyyy' }}
+      </td>
+
+      <td>
+        {{ surplus.mealType }}
+      </td>
+
+      <td>
+        {{ surplus.mealName }}
+      </td>
+
+      <td>
+        {{ surplus.producedQuantity }}
+      </td>
+
+      <td>
+        {{ surplus.consumedQuantity }}
+      </td>
+
+      <td>
+        {{ surplus.surplusQuantity }}
+      </td>
+
+      <td>
+        {{ surplus.status }}
+      </td>
+
+      <td>
+
+        <button
+          type="button"
+          (click)="deleteSurplusFood(surplus.id!)"
+        >
+          Delete
+        </button>
+
+      </td>
+
+    </tr>
+
+    <tr
+      *ngIf="!loading && surplusFoods.length === 0"
+    >
+
+      <td
+        colspan="9"
+        class="empty-table-message"
+      >
+        No surplus food records available.
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>

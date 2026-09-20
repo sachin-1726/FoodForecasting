@@ -1,0 +1,169 @@
+<h1>Consumption Management</h1>
+
+<p class="description">
+  Record the quantity of food actually consumed.
+  Consumption cannot exceed available production.
+</p>
+
+<div class="consumption-form">
+
+  <h2>Enter Consumption Details</h2>
+
+  <label>Consumption Date</label>
+
+  <input
+    type="date"
+    [(ngModel)]="consumptionDate"
+  >
+
+  <label>Meal Type</label>
+
+  <select [(ngModel)]="mealType">
+
+    <option value="Breakfast">
+      Breakfast
+    </option>
+
+    <option value="Lunch">
+      Lunch
+    </option>
+
+    <option value="Dinner">
+      Dinner
+    </option>
+
+  </select>
+
+  <label>Meal Name</label>
+
+  <input
+    type="text"
+    [(ngModel)]="mealName"
+    placeholder="Enter meal name"
+  >
+
+  <label>Quantity Consumed</label>
+
+  <input
+    type="number"
+    min="1"
+    [(ngModel)]="quantityConsumed"
+    placeholder="Enter quantity consumed"
+  >
+
+  <label>Status</label>
+
+  <select [(ngModel)]="status">
+
+    <option value="Consumed">
+      Consumed
+    </option>
+
+    <option value="Completed">
+      Completed
+    </option>
+
+  </select>
+
+  <button
+    type="button"
+    (click)="addConsumption()"
+  >
+    Save Consumption
+  </button>
+
+</div>
+
+<h2>Consumption List</h2>
+
+<p
+  *ngIf="loading"
+  class="loading-message"
+>
+  Loading consumption data...
+</p>
+
+<p
+  *ngIf="!loading && consumptions.length === 0"
+  class="empty-message"
+>
+  No consumption records found.
+</p>
+
+<table class="consumption-table">
+
+  <thead>
+
+    <tr>
+
+      <th>ID</th>
+      <th>Date</th>
+      <th>Meal Type</th>
+      <th>Meal Name</th>
+      <th>Quantity Consumed</th>
+      <th>Status</th>
+      <th>Action</th>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr
+      *ngFor="let consumption of consumptions"
+    >
+
+      <td>
+        {{ consumption.id }}
+      </td>
+
+      <td>
+        {{ consumption.consumptionDate | date:'dd-MM-yyyy' }}
+      </td>
+
+      <td>
+        {{ consumption.mealType }}
+      </td>
+
+      <td>
+        {{ consumption.mealName }}
+      </td>
+
+      <td>
+        {{ consumption.quantityConsumed }}
+      </td>
+
+      <td>
+        {{ consumption.status }}
+      </td>
+
+      <td>
+
+        <button
+          type="button"
+          (click)="deleteConsumption(consumption.id!)"
+        >
+          Delete
+        </button>
+
+      </td>
+
+    </tr>
+
+    <tr
+      *ngIf="!loading && consumptions.length === 0"
+    >
+
+      <td
+        colspan="7"
+        class="empty-table-message"
+      >
+        No consumption records available.
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>

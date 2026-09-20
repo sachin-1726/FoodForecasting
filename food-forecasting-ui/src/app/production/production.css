@@ -1,0 +1,475 @@
+/* =========================================================
+   PRODUCTION PAGE
+   ========================================================= */
+
+:host {
+  display: block;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADINGS
+   ========================================================= */
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 28px 0 15px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h3 {
+  margin: 0 0 14px;
+  font-size: 19px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.description {
+  margin: 0 0 25px;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   PRODUCTION FORM
+   ========================================================= */
+
+.production-form {
+  width: 100%;
+  max-width: 700px;
+  padding: 24px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+.production-form label {
+  display: block;
+
+  margin-top: 15px;
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+
+/* =========================================================
+   INPUTS & SELECT
+   ========================================================= */
+
+.production-form input,
+.production-form select {
+  width: 100%;
+
+  min-height: 42px;
+
+  padding: 10px 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.production-form input:focus,
+.production-form select:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================================
+   MAIN SAVE BUTTON
+   ========================================================= */
+
+.production-form > button:last-child {
+  width: 100%;
+
+  margin-top: 22px;
+
+  padding: 12px 18px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #16a34a;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.production-form > button:last-child:hover {
+  background: #15803d;
+}
+
+.production-form > button:last-child:active {
+  transform: scale(0.99);
+}
+
+
+/* =========================================================
+   FORECAST BUTTON
+   ========================================================= */
+
+.forecast-button {
+  display: block;
+
+  margin-top: 18px;
+
+  padding: 11px 18px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.forecast-button:hover {
+  background: #1d4ed8;
+}
+
+.forecast-button:active {
+  transform: scale(0.99);
+}
+
+.forecast-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   FORECAST RESULT BOX
+   ========================================================= */
+
+.forecast-result {
+  margin-top: 18px;
+  padding: 18px;
+
+  background: #eff6ff;
+
+  border: 1px solid #93c5fd;
+  border-radius: 9px;
+
+  box-sizing: border-box;
+}
+
+.forecast-result h3 {
+  color: #1e3a8a;
+}
+
+.forecast-result p {
+  margin: 7px 0;
+
+  color: #374151;
+
+  font-size: 14px;
+}
+
+.forecast-result strong {
+  color: #111827;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+   ========================================================= */
+
+.success-message {
+  margin-top: 14px !important;
+
+  color: #15803d !important;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
+
+.error-message {
+  margin-top: 15px;
+
+  padding: 12px 14px;
+
+  background: #fee2e2;
+
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+
+  color: #b91c1c;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LOADING MESSAGE
+   ========================================================= */
+
+.loading-message {
+  margin: 15px 0;
+
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   EMPTY MESSAGE
+   ========================================================= */
+
+.empty-message {
+  margin: 15px 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   PRODUCTION TABLE
+   ========================================================= */
+
+.production-table {
+  display: table !important;
+
+  width: 100%;
+
+  margin-top: 10px;
+
+  border-collapse: collapse;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.production-table thead {
+  display: table-header-group !important;
+}
+
+.production-table th {
+  padding: 12px 10px;
+
+  background: #f3f4f6;
+
+  border: 1px solid #d1d5db;
+
+  color: #111827;
+
+  text-align: left;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.production-table tbody {
+  display: table-row-group !important;
+}
+
+.production-table tr {
+  display: table-row !important;
+}
+
+.production-table td {
+  display: table-cell !important;
+
+  padding: 11px 10px;
+
+  border: 1px solid #e5e7eb;
+
+  color: #374151;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   TABLE HOVER
+   ========================================================= */
+
+.production-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+
+/* =========================================================
+   EMPTY TABLE MESSAGE
+   ========================================================= */
+
+.empty-table-message {
+  padding: 20px !important;
+
+  text-align: center;
+
+  color: #6b7280;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+   ========================================================= */
+
+.delete-button {
+  padding: 7px 12px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #dc2626;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.delete-button:hover {
+  background: #b91c1c;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  :host {
+    padding: 18px;
+  }
+
+  .production-form {
+    max-width: 100%;
+  }
+
+  .production-table {
+    display: block !important;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+  }
+
+  .production-table thead,
+  .production-table tbody {
+    display: table !important;
+
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  :host {
+    padding: 14px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 19px;
+  }
+
+  .production-form {
+    padding: 18px;
+  }
+
+  .forecast-button {
+    width: 100%;
+  }
+
+  .production-table {
+    font-size: 13px;
+  }
+
+  .production-table th,
+  .production-table td {
+    padding: 9px 8px;
+  }
+
+}

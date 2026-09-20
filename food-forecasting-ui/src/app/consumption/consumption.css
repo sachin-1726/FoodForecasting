@@ -1,0 +1,92 @@
+h1 {
+  margin-bottom: 20px;
+}
+
+.consumption-form {
+  width: 400px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.consumption-form h2 {
+  margin-top: 0;
+}
+
+.consumption-form label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+
+.consumption-form input,
+.consumption-form select {
+  width: 100%;
+  padding: 9px;
+  box-sizing: border-box;
+}
+
+.consumption-form button {
+  margin-top: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background: #f2f2f2;
+}
+
+table button {
+  padding: 6px 12px;
+  cursor: pointer;
+}.consumption-table {
+  display: table !important;
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.consumption-table thead {
+  display: table-header-group !important;
+}
+
+.consumption-table tbody {
+  display: table-row-group !important;
+}
+
+.consumption-table tr {
+  display: table-row !important;
+}
+
+.consumption-table th,
+.consumption-table td {
+  display: table-cell !important;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}.consumption-table {
+  display: table !important;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.consumption-table th,
+.consumption-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}

@@ -1,0 +1,197 @@
+<h1>Food Redistribution Management</h1>
+
+<p class="description">
+  Redistribute available surplus food to campus, hospital,
+  NGO or food shelter.
+</p>
+
+<div class="redistribution-form">
+
+  <h2>Enter Redistribution Details</h2>
+
+  <label>Redistribution Date</label>
+
+  <input
+    type="date"
+    [(ngModel)]="redistributionDate"
+  >
+
+  <label>Meal Name</label>
+
+  <input
+    type="text"
+    [(ngModel)]="mealName"
+    placeholder="Enter meal name"
+  >
+
+  <label>Quantity</label>
+
+  <input
+    type="number"
+    min="1"
+    [(ngModel)]="quantity"
+    placeholder="Enter quantity"
+  >
+
+  <label>Destination</label>
+
+  <select [(ngModel)]="destination">
+
+    <option value="">
+      Select Destination
+    </option>
+
+    <option value="Campus">
+      Campus
+    </option>
+
+    <option value="Hospital">
+      Hospital
+    </option>
+
+    <option value="NGO">
+      NGO
+    </option>
+
+    <option value="Food Shelter">
+      Food Shelter
+    </option>
+
+  </select>
+
+  <label>Receiver Name</label>
+
+  <input
+    type="text"
+    [(ngModel)]="receiverName"
+    placeholder="Enter receiver name"
+  >
+
+  <label>Status</label>
+
+  <select [(ngModel)]="status">
+
+    <option value="Distributed">
+      Distributed
+    </option>
+
+    <option value="Pending">
+      Pending
+    </option>
+
+    <option value="Completed">
+      Completed
+    </option>
+
+  </select>
+
+  <button
+    type="button"
+    (click)="addRedistribution()"
+  >
+    Save Redistribution
+  </button>
+
+</div>
+
+<h2>Redistribution List</h2>
+
+<p
+  *ngIf="loading"
+  class="loading-message"
+>
+  Loading redistribution data...
+</p>
+
+<p
+  *ngIf="!loading && redistributions.length === 0"
+  class="empty-message"
+>
+  No redistribution records found.
+</p>
+
+<table class="redistribution-table">
+
+  <thead>
+
+    <tr>
+
+      <th>ID</th>
+      <th>Date</th>
+      <th>Meal Name</th>
+      <th>Quantity</th>
+      <th>Destination</th>
+      <th>Receiver Name</th>
+      <th>Status</th>
+      <th>Action</th>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    <tr
+      *ngFor="let redistribution of redistributions"
+    >
+
+      <td>
+        {{ redistribution.id }}
+      </td>
+
+      <td>
+        {{
+          redistribution.redistributionDate
+          | date:'dd-MM-yyyy'
+        }}
+      </td>
+
+      <td>
+        {{ redistribution.mealName }}
+      </td>
+
+      <td>
+        {{ redistribution.quantity }}
+      </td>
+
+      <td>
+        {{ redistribution.destination }}
+      </td>
+
+      <td>
+        {{ redistribution.receiverName }}
+      </td>
+
+      <td>
+        {{ redistribution.status }}
+      </td>
+
+      <td>
+
+        <button
+          type="button"
+          (click)="deleteRedistribution(redistribution.id!)"
+        >
+          Delete
+        </button>
+
+      </td>
+
+    </tr>
+
+    <tr
+      *ngIf="!loading && redistributions.length === 0"
+    >
+
+      <td
+        colspan="8"
+        class="empty-table-message"
+      >
+        No redistribution records available.
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
